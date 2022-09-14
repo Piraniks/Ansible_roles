@@ -1,0 +1,7 @@
+---
+- name: install_packages
+  package:
+    name: 
+    - unzip
+    - net-tools
+    state: present
