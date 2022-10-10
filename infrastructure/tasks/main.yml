@@ -1,0 +1,18 @@
+---
+- name: Install docker and docker-compose packages
+  pip:
+    name:
+    - docker
+    - docker-compose
+
+- name: Clone required repository
+  git:
+    repo: {{ git_repository }}
+    version: {{ git_branch }}
+    dest: {{ deployment_path }}
+
+- name: Start docker-compose service
+  docker_compose:
+    project_src: {{ deployment_path }}
+    build: yes
+    debug: yes
